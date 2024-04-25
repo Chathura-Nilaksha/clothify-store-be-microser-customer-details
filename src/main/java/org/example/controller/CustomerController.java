@@ -1,11 +1,9 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.dto.CustomerDto;
 import org.example.service.CustomerService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/customer")
@@ -13,7 +11,10 @@ import org.springframework.web.bind.annotation.RestController;
 @CrossOrigin
 public class CustomerController {
     final CustomerService customerService ;
-
+    @PostMapping("/save-details")
+    public void saveCustomerDetails(@RequestBody CustomerDto customerDto){
+        customerService.saveCustomerDetails(customerDto);
+    }
 
 
 }
