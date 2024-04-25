@@ -1,12 +1,21 @@
-package org.example.dto;
+package org.example.entity;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class CustomerDto {
-    private Integer customerCode; // when registering only this does nt receive any input from FE.But when update this received some input
+@Entity
+public class CustomerEntity {
+    @Id
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
+    private Integer customerCode;
+
     private String firstName;
     private String lastName;
     private String phoneNumber1;
