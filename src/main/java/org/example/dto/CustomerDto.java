@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CustomerDto {
-    private Integer customerCode; // when registering only this does nt receive any input from FE.But when update this received some input
+    private Integer customerCode; // when registering this does nt receive any input from FE.But when update this received some input
     private String firstName;
     private String lastName;
     private String phoneNumber1;

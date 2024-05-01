@@ -1,7 +1,10 @@
 package org.example.service;
 
 import org.example.dto.CustomerDto;
+import org.springframework.http.ResponseEntity;
 
 public interface CustomerService {
-    public void saveCustomerDetails(CustomerDto customerDto);
+    ResponseEntity<String> saveCustomerDetails(CustomerDto customerDto);
+    ResponseEntity<String> logInValidation(String email, String password);
+
 }
