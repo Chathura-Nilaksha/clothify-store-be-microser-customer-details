@@ -20,6 +20,10 @@ public class CustomerController {
     public ResponseEntity<String> logInValidation(String email, String password){
         return customerService.logInValidation(email, password);
     }
+//    @PostMapping("/change-password") //change password
+//    public ResponseEntity<String> changePassword(String email){
+//
+//    }
 
 
 }
