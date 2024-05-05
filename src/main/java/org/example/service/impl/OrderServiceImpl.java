@@ -1,4 +1,6 @@
 package org.example.service.impl;
 
-public class OrderServiceImpl {
+import org.example.service.OrderService;
+
+public class OrderServiceImpl implements OrderService {
 }

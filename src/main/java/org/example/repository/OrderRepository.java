@@ -1,4 +1,7 @@
 package org.example.repository;
 
-public interface OrderRepository {
+import org.example.entity.OrderEntity;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository extends JpaRepository<OrderEntity, Integer> {
 }
