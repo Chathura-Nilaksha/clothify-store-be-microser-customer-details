@@ -13,5 +13,4 @@ public class LoginDto {
     private Integer loginId;
     private String email;
     private String password;
-
 }

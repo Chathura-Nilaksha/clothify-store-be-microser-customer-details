@@ -18,4 +18,5 @@ public class LoginEntity {
     private Integer loginId;
     private String email;
     private String password;
+
 }
