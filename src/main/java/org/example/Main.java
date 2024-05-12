@@ -8,7 +8,7 @@ import org.springframework.boot.jdbc.metadata.TomcatDataSourcePoolMetadata;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 //@EnableJpaRepositories
-@SpringBootApplication (exclude = {DataSourceAutoConfiguration.class})
+@SpringBootApplication //(exclude = {DataSourceAutoConfiguration.class})
 
 public class Main {
     public static void main(String[] args) {
