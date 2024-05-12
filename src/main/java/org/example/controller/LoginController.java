@@ -18,9 +18,7 @@ import java.net.http.HttpResponse;
 public class LoginController {
 
     private final LoginService loginService;
-    public ResponseEntity loginValidation(@RequestBody LoginDto loginDto){
-
+    public ResponseEntity<String> loginValidation(@RequestBody LoginDto loginDto){
         return loginService.loginValidation(loginDto.getEmail(), loginDto.getPassword());
     }
-
 }

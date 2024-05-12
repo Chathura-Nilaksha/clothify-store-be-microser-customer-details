@@ -24,8 +24,8 @@ public class LoginServiceImpl implements LoginService {
         loginDto.setPassword(password);
         loginRepository.save(modelMapper.map(loginDto, LoginEntity.class));
     }
-    @Override
-    public ResponseEntity loginValidation(String email, String password) {
+    @Override    // CHECK THIS net:public static <T> ResponseEntity<T> ok(@Nullable T body) {return ok().body(body);}
+    public ResponseEntity<String> loginValidation(String email, String password) {
         LoginEntity entityByEmail = loginRepository.findByEmail(email);
         if(Objects.equals(entityByEmail.getEmail(), email)){
             return entityByEmail.getPassword()==password ?

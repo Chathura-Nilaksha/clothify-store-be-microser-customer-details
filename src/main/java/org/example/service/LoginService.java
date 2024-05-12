@@ -6,5 +6,5 @@ public interface LoginService {
 
     void saveLoginDetails(String email, String password);
 
-    ResponseEntity loginValidation(String email, String password);
+    ResponseEntity<String> loginValidation(String email, String password);
 }

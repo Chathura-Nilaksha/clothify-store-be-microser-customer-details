@@ -6,7 +6,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Data
-@Setter
 @NoArgsConstructor
 @AllArgsConstructor
 public class LoginDto {
