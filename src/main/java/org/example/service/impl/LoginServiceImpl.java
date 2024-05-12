@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 
+import java.util.Objects;
+
 @Component
 public class LoginServiceImpl implements LoginService {
     @Autowired
@@ -24,8 +26,14 @@ public class LoginServiceImpl implements LoginService {
     }
     @Override
     public ResponseEntity loginValidation(String email, String password) {
-        loginRepository.findByEmail(email);
-        loginRepository.findBy
-        return null;
+        LoginEntity entityByEmail = loginRepository.findByEmail(email);
+        if(Objects.equals(entityByEmail.getEmail(), email)){
+            return entityByEmail.getPassword()==password ?
+                    ResponseEntity.ok("Email and Password are correct"):
+                    ResponseEntity.ofNullable("Password is incorrect. " +
+                                            "Please enter the correct Password") ;
+        }else {
+            return ResponseEntity.ofNullable("Your email does not have an account");
+        }
     }
 }
