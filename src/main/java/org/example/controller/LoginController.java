@@ -4,10 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.example.dto.LoginDto;
 import org.example.service.LoginService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.http.HttpResponse;
 
@@ -18,7 +15,12 @@ import java.net.http.HttpResponse;
 public class LoginController {
 
     private final LoginService loginService;
+    @PostMapping("/login-validation") //to validate when customer login to customer's account.
     public ResponseEntity<String> loginValidation(@RequestBody LoginDto loginDto){
         return loginService.loginValidation(loginDto.getEmail(), loginDto.getPassword());
+    }
+    @PostMapping("/change-password") //to change password.
+    public ResponseEntity<String> changePassword(@RequestBody LoginDto loginDto){
+        return loginService.changePassword(loginDto);
     }
 }

@@ -25,15 +25,7 @@ public class CustomerServiceImpl implements CustomerService {
         return ResponseEntity.ok("Details saved. Thank You.");
     }
 
-    @Override
-    public ResponseEntity<String> logInValidation(String email, String password) {
-        if(email.equalsIgnoreCase(customerRepository.existsByEmail(email))){
-            return Objects.equals(password, customerRepository.findByEmail(email).getPassword()) ? ResponseEntity.ok("You can login"):
-                                        ResponseEntity.ok("Incorrect Password");
-        }else{
-            return ResponseEntity.ok("Email is incorrect. Check & reenter the correct Email please.");
-        }
-    }
+
 }
 //ResponseEntity<Boolean>
 //(Objects.nonNull(department.getDepartmentName())

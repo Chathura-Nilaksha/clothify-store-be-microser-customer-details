@@ -5,6 +5,6 @@ import org.springframework.http.ResponseEntity;
 
 public interface CustomerService {
     ResponseEntity<String> saveCustomerDetails(CustomerDto customerDto);
-    ResponseEntity<String> logInValidation(String email, String password);
+
 
 }

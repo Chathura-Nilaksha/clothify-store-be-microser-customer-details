@@ -28,12 +28,24 @@ public class LoginServiceImpl implements LoginService {
     public ResponseEntity<String> loginValidation(String email, String password) {
         LoginEntity entityByEmail = loginRepository.findByEmail(email);
         if(Objects.equals(entityByEmail.getEmail(), email)){
-            return entityByEmail.getPassword()==password ?
+            return Objects.equals(entityByEmail.getPassword(), password) ?
                     ResponseEntity.ok("Email and Password are correct"):
                     ResponseEntity.ofNullable("Password is incorrect. " +
                                             "Please enter the correct Password") ;
         }else {
             return ResponseEntity.ofNullable("Your email does not have an account");
+        }
+    }
+    @Override
+    public ResponseEntity<String> changePassword(LoginDto loginDto) {
+
+        If(loginRepository.existsByEmail(loginDto.getEmail())) {
+            LoginEntity loginEntityToChange = loginRepository.findByEmail(loginDto.getEmail());
+            loginEntityToChange.setPassword(loginDto.getPassword());
+            loginRepository.save(loginEntityToChange);
+            return ResponseEntity.ok("Success");
+        }else{
+            return ResponseEntity.ok("Your email does not have an account");
         }
     }
 }

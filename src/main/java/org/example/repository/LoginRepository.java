@@ -6,4 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface LoginRepository extends JpaRepository<LoginEntity, Integer  > {
     LoginEntity findByEmail(String email);
+    Boolean existsByEmail(String email);
 }

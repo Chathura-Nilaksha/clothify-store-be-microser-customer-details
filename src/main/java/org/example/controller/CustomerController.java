@@ -19,10 +19,6 @@ public class CustomerController {
         loginService.saveLoginDetails(customerDto.getEmail(), customerDto.getPassword());
         return customerService.saveCustomerDetails(customerDto);
     }
-    @PostMapping("/log-in-validation")
-    public ResponseEntity<String> logInValidation(String email, String password){
-        return customerService.logInValidation(email, password);
-    }
 //    @PostMapping("/change-password") //change password
 //    public ResponseEntity<String> changePassword(String email){
 //
