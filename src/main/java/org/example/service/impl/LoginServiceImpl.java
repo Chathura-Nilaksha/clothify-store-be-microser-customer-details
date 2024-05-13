@@ -37,9 +37,8 @@ public class LoginServiceImpl implements LoginService {
         }
     }
     @Override
-    public ResponseEntity<String> changePassword(LoginDto loginDto) {
-
-        If(loginRepository.existsByEmail(loginDto.getEmail())) {
+    public ResponseEntity<String> changePassword(@org.jetbrains.annotations.NotNull LoginDto loginDto) {
+        if (loginRepository.existsByEmail(loginDto.getEmail())){
             LoginEntity loginEntityToChange = loginRepository.findByEmail(loginDto.getEmail());
             loginEntityToChange.setPassword(loginDto.getPassword());
             loginRepository.save(loginEntityToChange);
@@ -47,5 +46,6 @@ public class LoginServiceImpl implements LoginService {
         }else{
             return ResponseEntity.ok("Your email does not have an account");
         }
+
     }
 }
