@@ -6,15 +6,21 @@ import org.example.repository.LoginRepository;
 import org.example.service.LoginService;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Lazy;
+import org.springframework.context.annotation.Scope;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Objects;
-
-@Component
+@Service
+@Lazy
+//@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class LoginServiceImpl implements LoginService {
     @Autowired
     LoginRepository loginRepository;
+    @Autowired
     ModelMapper modelMapper;
     LoginDto loginDto;
     @Override
@@ -27,7 +33,8 @@ public class LoginServiceImpl implements LoginService {
     @Override    // CHECK THIS net:public static <T> ResponseEntity<T> ok(@Nullable T body) {return ok().body(body);}
     public ResponseEntity<String> loginValidation(String email, String password) {
         LoginEntity entityByEmail = loginRepository.findByEmail(email);
-        if(Objects.equals(entityByEmail.getEmail(), email)){
+
+        if(entityByEmail!=null){
             return Objects.equals(entityByEmail.getPassword(), password) ?
                     ResponseEntity.ok("Email and Password are correct"):
                     ResponseEntity.ofNullable("Password is incorrect. " +
@@ -46,6 +53,5 @@ public class LoginServiceImpl implements LoginService {
         }else{
             return ResponseEntity.ok("Your email does not have an account");
         }
-
     }
 }
